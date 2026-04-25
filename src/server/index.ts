@@ -38,9 +38,16 @@ app.get('/api/health', (_req, res) => {
 });
 
 if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
-  app.listen(Number(PORT), () => {
+  const server = app.listen(Number(PORT), () => {
     console.log(`🟢 AGORA AI server running on http://localhost:${PORT}`);
     console.log(`   AI Provider: ${process.env.AI_PROVIDER || 'openai'}`);
+  }).on('error', (err: any) => {
+    if (err.code === 'EADDRINUSE') {
+      console.error(`❌ Port ${PORT} is already in use. Please stop any other running instances of AGORA.`);
+      process.exit(1);
+    } else {
+      console.error(`❌ Server error:`, err);
+    }
   });
 }
 

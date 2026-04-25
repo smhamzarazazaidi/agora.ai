@@ -189,7 +189,8 @@ RULES:
   try {
     const raw = verdictRes.content;
     const getSection = (name: string) => {
-      const regex = new RegExp(`${name}\\s*[\\r\\n]+([\\s\\S]*?)(?=\\r?\\n[A-Z\\s]+|---|$|CONFIDENCE)`, 'i');
+      const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp(`${escapedName}\\s*[\\r\\n]+([\\s\\S]*?)(?=\\r?\\n[A-Z\\s]{3,}|---|$|CONFIDENCE SCORE:)`, 'i');
       const m = raw.match(regex);
       return m ? m[1].trim() : '';
     };

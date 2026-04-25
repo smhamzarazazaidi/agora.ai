@@ -910,6 +910,98 @@
         }
       ],
       "createdAt": "2026-04-25T05:07:21.957Z"
+    },
+    "d4860667-75f0-4d59-b5b1-314be4405be4": {
+      "_id": "d4860667-75f0-4d59-b5b1-314be4405be4",
+      "userId": "hackathon-user",
+      "idea": "can we fail if not study",
+      "rounds": 3,
+      "mode": "fast",
+      "status": "error",
+      "messages": [
+        {
+          "id": "m3304",
+          "agent": "Llama-3",
+          "color": "blue",
+          "summary": "Response could not be generated reliably.",
+          "content": "The system encountered formatting issues and is retrying internally to maintain structured output consistency. Our strict validation layer rejected the previous attempts to ensure high-fidelity reasoning and proper debate structure.",
+          "round": 1,
+          "createdAt": "2026-04-25T05:29:44.860Z"
+        },
+        {
+          "id": "m4757",
+          "agent": "Gemma",
+          "color": "green",
+          "summary": "Response could not be generated reliably.",
+          "content": "The system encountered formatting issues and is retrying internally to maintain structured output consistency. Our strict validation layer rejected the previous attempts to ensure high-fidelity reasoning and proper debate structure.",
+          "round": 1,
+          "createdAt": "2026-04-25T05:29:47.378Z"
+        },
+        {
+          "id": "m8378",
+          "agent": "Qwen",
+          "color": "amber",
+          "summary": "Response could not be generated reliably.",
+          "content": "The system encountered formatting issues and is retrying internally to maintain structured output consistency. Our strict validation layer rejected the previous attempts to ensure high-fidelity reasoning and proper debate structure.",
+          "round": 1,
+          "createdAt": "2026-04-25T05:29:49.941Z"
+        },
+        {
+          "id": "m6604",
+          "agent": "Llama-3",
+          "color": "blue",
+          "summary": "Response could not be generated reliably.",
+          "content": "The system encountered formatting issues and is retrying internally to maintain structured output consistency. Our strict validation layer rejected the previous attempts to ensure high-fidelity reasoning and proper debate structure.",
+          "round": 2,
+          "createdAt": "2026-04-25T05:29:52.445Z"
+        },
+        {
+          "id": "m4852",
+          "agent": "Gemma",
+          "color": "green",
+          "summary": "Response could not be generated reliably.",
+          "content": "The system encountered formatting issues and is retrying internally to maintain structured output consistency. Our strict validation layer rejected the previous attempts to ensure high-fidelity reasoning and proper debate structure.",
+          "round": 2,
+          "createdAt": "2026-04-25T05:29:54.951Z"
+        },
+        {
+          "id": "m9383",
+          "agent": "Qwen",
+          "color": "amber",
+          "summary": "Response could not be generated reliably.",
+          "content": "The system encountered formatting issues and is retrying internally to maintain structured output consistency. Our strict validation layer rejected the previous attempts to ensure high-fidelity reasoning and proper debate structure.",
+          "round": 2,
+          "createdAt": "2026-04-25T05:29:57.468Z"
+        },
+        {
+          "id": "m7363",
+          "agent": "Llama-3",
+          "color": "blue",
+          "summary": "Response could not be generated reliably.",
+          "content": "The system encountered formatting issues and is retrying internally to maintain structured output consistency. Our strict validation layer rejected the previous attempts to ensure high-fidelity reasoning and proper debate structure.",
+          "round": 3,
+          "createdAt": "2026-04-25T05:29:59.980Z"
+        },
+        {
+          "id": "m6094",
+          "agent": "Gemma",
+          "color": "green",
+          "summary": "Response could not be generated reliably.",
+          "content": "The system encountered formatting issues and is retrying internally to maintain structured output consistency. Our strict validation layer rejected the previous attempts to ensure high-fidelity reasoning and proper debate structure.",
+          "round": 3,
+          "createdAt": "2026-04-25T05:30:02.488Z"
+        },
+        {
+          "id": "m4716",
+          "agent": "Qwen",
+          "color": "amber",
+          "summary": "Response could not be generated reliably.",
+          "content": "The system encountered formatting issues and is retrying internally to maintain structured output consistency. Our strict validation layer rejected the previous attempts to ensure high-fidelity reasoning and proper debate structure.",
+          "round": 3,
+          "createdAt": "2026-04-25T05:30:04.995Z"
+        }
+      ],
+      "createdAt": "2026-04-25T05:29:42.343Z"
     }
   },
   "users": {
