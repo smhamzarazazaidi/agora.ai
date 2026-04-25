@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GenDuet | Watch AI Think</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ PORTAL ═══════════════════════════════════════════ -->
+<div class="page active" id="page-portal">
+  <div class="portal-wrap">
+    <div class="portal-content">
+      <div class="portal-brand">Gen<em>Duet</em></div>
+      <p class="portal-sub">What's your idea, decision, or problem?</p>
+      
+      <div class="portal-card">
+        <textarea class="portal-textarea-large" id="portalIdeaInput" placeholder="Enter your proposition here..."></textarea>
+        
+        <div class="portal-upload-zone" id="portalUploadZone" onclick="document.getElementById('portalFileInput').click()">
+          <div class="upload-icon">📎</div>
+          <div class="upload-text" id="portalUploadText">Upload a document (optional) — PDF or TXT</div>
+          <input type="file" id="portalFileInput" style="display:none" accept=".pdf,.txt" onchange="handlePortalFile(this)">
+        </div>
+
+        <button class="btn btn-primary btn-lg btn-full" id="portalStartBtn" onclick="submitPortalIdea()">
+          Start Reasoning →
+        </button>
+        <div id="portalError" class="portal-error">Please enter an idea to begin.</div>
+      </div>
+      
+      <div style="margin-top: 2rem;">
+        <button class="btn btn-ghost" onclick="showPage('landing')">About GenDuet</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ LANDING ═══════════════════════════════════════════ -->
+<div class="page" id="page-landing">
+
+<nav>
+  <a class="nav-logo" href="#" onclick="showPage('landing')">Gen<em>Duet</em></a>
+  <div class="nav-links">
+    <a href="#how">How it works</a>
+    <a href="#features">Features</a>
+    <button class="btn btn-primary" onclick="showPage('portal')">Start a Debate</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Multi-agent reasoning system
+    </div>
+    <h1>Watch AI Think —<br><em>Not Just Respond</em></h1>
+    <p class="hero-sub">GenDuet runs structured debates between AI agents to give you deeper, more reliable answers on any idea or problem.</p>
+    <div class="hero-actions">
+      <button class="btn btn-primary btn-lg" onclick="showPage('portal')">Start a Debate</button>
+      <a class="btn btn-secondary btn-lg" href="#how">See How It Works</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="debate-preview">
+      <div class="debate-preview-header">
+        <span class="preview-title">Live Session</span>
+        <span class="preview-status"><span class="preview-dot"></span>Round 2 of 3</span>
+      </div>
+      <div style="font-size:.72rem;color:var(--text3);margin-bottom:.75rem;font-style:italic">"Should we expand into Southeast Asian markets now?"</div>
+      <div class="preview-msg blue">
+        <div class="agent-label">AI-1 · Optimist</div>
+        Market timing is favorable — ASEAN GDP grew 5.1% last year, and digital adoption is accelerating. Early movers capture category leadership.
+      </div>
+      <div class="preview-msg green">
+        <div class="agent-label">AI-2 · Critic</div>
+        Regulatory variance across 10 countries adds 14–22 months to go-to-market. Infrastructure readiness in tier-2 cities remains a bottleneck.
+      </div>
+      <div class="preview-msg amber">
+        <div class="agent-label">AI-3 · Synthesist</div>
+        Phased entry — Singapore and Malaysia first — hedges risk while capturing growth. Revisit broader rollout in Q3 2026.
+      </div>
+      <div class="preview-verdict">
+        <div class="verdict-label">Final Verdict</div>
+        Proceed with a phased two-country pilot. Full expansion is premature but delaying entirely risks ceding ground.
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section" id="how">
+  <div class="section-label">Process</div>
+  <h2 class="section-title">Three steps to structured clarity</h2>
+  <p class="section-sub">Not a chatbot. A structured reasoning engine where AI agents challenge each other until the best answer surfaces.</p>
+  <div class="how-grid">
+    <div class="how-step">
+      <span class="step-num">01</span>
+      <div class="step-icon">✏️</div>
+      <div class="step-title">Submit your idea</div>
+      <p class="step-desc">Enter a question, decision, or problem. GenDuet understands context and frames it as a structured debate proposition.</p>
+    </div>
+    <div class="how-step">
+      <span class="step-num">02</span>
+      <div class="step-icon">⚡</div>
+      <div class="step-title">AI agents debate in rounds</div>
+      <p class="step-desc">Multiple agents argue, counter-argue, and synthesize across structured rounds. Each voice has a distinct reasoning lens.</p>
+    </div>
+    <div class="how-step">
+      <span class="step-num">03</span>
+      <div class="step-icon">✦</div>
+      <div class="step-title">Get a structured verdict</div>
+      <p class="step-desc">A final card delivers a clear decision, strengths, weaknesses, and actionable next steps — not vague suggestions.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section" id="features">
+  <div class="section-label">Capabilities</div>
+  <h2 class="section-title">Built for rigorous reasoning</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">◈</div>
+      <div class="feature-title">Multi-agent reasoning</div>
+      <p class="feature-desc">Dedicated agents with distinct cognitive stances — optimist, critic, synthesist — ensure every angle is genuinely challenged.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">◷</div>
+      <div class="feature-title">Round-based debate structure</div>
+      <p class="feature-desc">Arguments evolve across rounds. Each agent reads what came before and builds a sharper response — not a scripted reply.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">▤</div>
+      <div class="feature-title">Structured outputs</div>
+      <p class="feature-desc">Verdicts arrive as structured cards with sections for decision, strengths, weaknesses, and recommendations. Always actionable.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">◎</div>
+      <div class="feature-title">Actionable insights</div>
+      <p class="feature-desc">The final verdict doesn't just analyze — it tells you exactly what to do next, with specific, prioritized recommendations.</p>
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <div class="cta-inner">
+    <h2 class="cta-title">Start your first AI debate</h2>
+    <p class="cta-sub">Stop getting vague AI responses. Get structured arguments, genuine disagreement, and a verdict you can act on.</p>
+    <button class="btn btn-white btn-lg" onclick="showPage('portal')">Try GenDuet — it's free</button>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-logo">GenDuet</span>
+  <span class="footer-copy">© 2025 GenDuet. All rights reserved.</span>
+</footer>
+
+</div>
+
+<!-- Auth page removed -->
+
+<!-- ═══════════════════════════════════════════ APP ═══════════════════════════════════════════ -->
+<div class="page" id="page-app">
+
+<nav>
+  <a class="nav-logo" href="#" onclick="showPage('landing')">Gen<em>Duet</em></a>
+  <div class="nav-links">
+    <button class="btn btn-ghost" onclick="showPage('landing')">← Back to site</button>
+  </div>
+</nav>
+
+<div class="app-wrap">
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-toggle-wrap">
+      <button class="sidebar-toggle" onclick="toggleSidebar()">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+    </div>
+    <div class="upload-wrap">
+      <div class="upload-label">
+        Context Document
+        <span id="uploadStatus" class="upload-status"></span>
+      </div>
+      <input type="file" id="docUpload" accept=".pdf,.txt" class="upload-input-custom" onchange="handleFileUpload(this)">
+    </div>
+
+    <div>
+      <div class="sidebar-section-title">Your Idea</div>
+      <textarea class="idea-input" id="ideaInput" placeholder="Enter your idea or problem to debate…">Should we expand into Southeast Asian markets now?</textarea>
+    </div>
+
+    <div>
+      <div class="sidebar-section-title">Constraints (Optional)</div>
+      <input type="text" class="constraint-input" id="goalInput" placeholder="What does success look like?">
+      <input type="text" class="constraint-input" id="timeframeInput" placeholder="How much time do you have? (e.g. 2 weeks)">
+      <input type="text" class="constraint-input" id="resourcesInput" placeholder="Key constraints: budget, team size, tools">
+      <input type="text" class="constraint-input" id="concernInput" placeholder="What's your biggest worry about this?">
+    </div>
+
+    <div>
+      <button class="btn btn-primary btn-full" id="startBtn" onclick="startDebate()" style="padding:.7rem">▶ Start Debate</button>
+    </div>
+
+    <div>
+      <div class="sidebar-section-title">Settings</div>
+      <div class="setting-row">
+        <span class="setting-label">Rounds</span>
+        <div class="rounds-control">
+          <button class="round-btn" onclick="changeRounds(-1)">−</button>
+          <span class="setting-value" id="roundsDisplay">3</span>
+          <button class="round-btn" onclick="changeRounds(1)">+</button>
+        </div>
+      </div>
+      <div class="setting-row">
+        <span class="setting-label">Depth</span>
+        <div class="toggle-wrap">
+          <span class="toggle-opt active" id="opt-fast" onclick="setDepth('fast')">Fast</span>
+          <span class="toggle-opt" id="opt-deep" onclick="setDepth('deep')">Deep</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sidebar-section-title">Status</div>
+      <div class="status-indicator">
+        <div class="status-label">Current state</div>
+        <div class="status-value">
+          <span class="status-dot" id="statusDot"></span>
+          <span id="statusText">Idle — ready</span>
+        </div>
+        <div class="round-progress" id="roundProgress" style="display:none"></div>
+      </div>
+    </div>
+    <div>
+      <!-- Settings removed logout for no-auth mode -->
+    </div>
+  </aside>
+
+  <!-- DEBATE ARENA -->
+  <main class="debate-arena">
+    <div class="arena-header">
+      <div class="arena-title">Debate Session</div>
+      <div class="arena-idea" id="arenaIdea">Enter an idea and press Start Debate</div>
+      <div class="arena-meta" id="arenaMeta">Ready to begin</div>
+    </div>
+
+    <div class="arena-body" id="arenaBody">
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon">◎</div>
+        <div class="empty-title">No debate running</div>
+        <p class="empty-sub">Enter your idea in the left panel<br>and press <strong>Start Debate</strong></p>
+      </div>
+    </div>
+  </main>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
