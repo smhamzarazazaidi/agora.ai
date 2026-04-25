@@ -102,6 +102,7 @@ RULES:
       transcript = transcript.substring(0, 5000) + "\n\n... [TRUNCATED FOR BREVITY] ...\n\n" + transcript.slice(-15000);
     }
 
+  try {
     const res = await generateAIResponse({
       systemPrompt: verdictPrompt,
       messages: [{ role: 'user', content: `Original Idea: "${idea}"\n\nFull Reasoning Trace:\n${transcript}` }],

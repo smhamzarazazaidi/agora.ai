@@ -1,13 +1,14 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
+import fs from 'fs';
 // MongoDB disabled: IP not whitelisted on Atlas. Using mockDb.
 import debateRoutes from './routes/debate.routes';
 import authRoutes from './routes/auth.routes';
 import codeRoutes from './routes/code.routes';
 import ragRoutes from './routes/rag.routes';
 
-import path from 'path';
 dotenv.config();
 
 const rootPath = process.cwd();
@@ -35,6 +36,25 @@ app.use('/api/rag', ragRoutes);
 
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', provider: process.env.AI_PROVIDER || 'openai' });
+});
+const errorLogPath = path.join(process.cwd(), 'server-error.log');
+
+app.use((err: any, req: any, res: any, next: any) => {
+  const errorDetail = `
+[${new Date().toISOString()}] ${req.method} ${req.url}
+Error: ${err.message}
+Stack: ${err.stack}
+--------------------------------------------------
+`;
+  console.error('[Global Error]', err);
+  fs.appendFileSync(errorLogPath, errorDetail);
+  
+  if (res.headersSent) return next(err);
+  res.status(500).json({
+    error: 'Internal Server Error',
+    message: err.message,
+    stack: err.stack
+  });
 });
 
 if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
