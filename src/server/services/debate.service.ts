@@ -240,6 +240,8 @@ RULES:
         score: confidenceScore,
         basis: confidenceBasis
       },
+      confirmed_by: getSection("CONFIRMED BY").split(',').map(s => s.trim()).filter(Boolean),
+      minority_note: getSection("MINORITY NOTE"),
       agreed_statement: getSection("WHAT YOU'RE DECIDING")
     };
   } catch (err) {

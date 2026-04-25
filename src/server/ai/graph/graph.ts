@@ -155,6 +155,8 @@ RULES:
         score: confidenceScore,
         basis: confidenceBasis
       },
+      confirmed_by: getSection("CONFIRMED BY").split(',').map(s => s.trim()).filter(Boolean),
+      minority_note: getSection("MINORITY NOTE"),
       rawOutput: raw,
       agreed_statement: getSection("WHAT YOU'RE DECIDING")
     };
@@ -171,6 +173,7 @@ RULES:
       recommendation: { action: 'STOP', condition: 'System error' },
       nextActions: [],
       confidence: { score: 0, basis: 'Synthesis failed' },
+      confirmed_by: [],
       agreed_statement: 'Synthesis failed.'
     };
   }

@@ -42,6 +42,8 @@ export interface Verdict {
     score: number;
     basis: string;
   };
+  confirmed_by: string[];
+  minority_note?: string;
   rawOutput?: string;
   /** @deprecated Keep for compatibility with old UI if needed, but we'll use the fields above */
   agreed_statement?: string;

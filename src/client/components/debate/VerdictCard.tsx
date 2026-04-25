@@ -22,7 +22,7 @@ export default function VerdictCard({ verdict }: Props) {
         <div className="verdict-section">
           <div className="verdict-section-title text-sm font-semibold text-[var(--color-text-mut)] mb-2">Confirmed By</div>
           <div className="flex gap-2">
-            {verdict.confirmed_by.map((agent, i) => (
+            {(verdict.confirmed_by || []).map((agent, i) => (
               <span key={i} className="px-2 py-1 bg-[var(--color-bg-alt)] border border-[var(--color-border)] rounded text-xs font-medium text-[var(--color-text)]">
                 {agent}
               </span>
