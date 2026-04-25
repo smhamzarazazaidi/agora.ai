@@ -72,22 +72,21 @@ export default function DebateArena() {
             {Object.entries(rounds).map(([round, msgs]) => {
               const r = Number(round);
               return (
-                <div key={round}>
-                  <div className="round-block">
-                    <RoundHeader
-                      round={r}
-                      isContinuation={debate ? r > debate.rounds : false}
-                    />
-                    {msgs.map((msg, i) => (
-                      <AgentMessage key={msg.id} message={msg} index={i} />
-                    ))}
-                  </div>
-                  {r === debate?.rounds && debate?.verdict && (
-                    <VerdictCard verdict={debate.verdict} />
-                  )}
+                <div key={round} className="round-block">
+                  <RoundHeader
+                    round={r}
+                    isContinuation={debate ? r > debate.rounds : false}
+                  />
+                  {msgs.map((msg, i) => (
+                    <AgentMessage key={msg.id} message={msg} index={i} />
+                  ))}
                 </div>
               );
             })}
+
+            {debate?.verdict && (
+              <VerdictCard verdict={debate.verdict} />
+            )}
 
             {typing && (
               <TypingIndicator agent={typing.agent} />

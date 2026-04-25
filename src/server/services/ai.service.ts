@@ -22,14 +22,16 @@ export interface AIConfig {
 
 export function getActiveModels(): AIConfig[] {
   const configs = [
-    { key: process.env.GROQ_API_1, model: process.env.GROQ_MODEL_1 || 'llama-3.3-70b-versatile', url: 'https://api.groq.com/openai/v1', supportsTools: true },
-    { key: process.env.OPENROUTER_1, model: process.env.OPENROUTER_MODEL_1 || 'google/gemma-2-9b-it:free', url: 'https://openrouter.ai/api/v1', supportsTools: false },
-    { key: process.env.OPENROUTER_2, model: process.env.OPENROUTER_MODEL_2 || 'qwen/qwen-2.5-72b-instruct:free', url: 'https://openrouter.ai/api/v1', supportsTools: false },
-    { key: process.env.GROQ_API_2, model: process.env.GROQ_MODEL_2 || 'qwen-2.5-32b', url: 'https://api.groq.com/openai/v1', supportsTools: false },
-    { key: process.env.OPENROUTER_1, model: process.env.OPENROUTER_MODEL_3 || 'minimax/minimax-m2.5:free', url: 'https://openrouter.ai/api/v1', supportsTools: false }
+    { key: process.env.GROQ_API_1, model: 'llama-3.3-70b-versatile', url: 'https://api.groq.com/openai/v1', supportsTools: true },
+    { key: process.env.GROQ_API_1, model: 'llama-3.1-70b-versatile', url: 'https://api.groq.com/openai/v1', supportsTools: true },
+    { key: process.env.GROQ_API_1, model: 'llama-3.1-8b-instant', url: 'https://api.groq.com/openai/v1', supportsTools: false },
+    { key: process.env.OPENROUTER_1, model: 'google/gemma-2-9b-it:free', url: 'https://openrouter.ai/api/v1', supportsTools: false },
+    { key: process.env.OPENROUTER_1, model: 'qwen/qwen-2.5-72b-instruct:free', url: 'https://openrouter.ai/api/v1', supportsTools: false },
+    { key: process.env.GROQ_API_2 || process.env.GROQ_API_1, model: 'mixtral-8x7b-32768', url: 'https://api.groq.com/openai/v1', supportsTools: false },
   ].filter(c => c.key) as AIConfig[];
 
-  return configs.slice(0, 3);
+  // Return up to 4 models to try in rotation
+  return configs.slice(0, 4);
 }
 
 export function formatModelName(raw: string): string {

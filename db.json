@@ -1002,6 +1002,127 @@
         }
       ],
       "createdAt": "2026-04-25T05:29:42.343Z"
+    },
+    "174c5ebd-d3bc-4dfd-b1d9-a8d2713d8f58": {
+      "_id": "174c5ebd-d3bc-4dfd-b1d9-a8d2713d8f58",
+      "userId": "hackathon-user",
+      "idea": "Founders, students, and decision-makers often spend days or even weeks validating ideas because feedback is either too polite, too slow, or too shallow. Friends hesitate to be critical, while online communities provide fragmented opinions without structure or depth. As a result, weak ideas survive too long simply because they were never rigorously challenged early enough.\n\nThis creates a major gap in decision-making: there is no fast, structured way to stress-test ideas from multiple perspectives before investing time and resources into them.",
+      "rounds": 3,
+      "mode": "fast",
+      "status": "error",
+      "messages": [
+        {
+          "id": "m4112",
+          "agent": "Llama-3",
+          "color": "blue",
+          "summary": "Response could not be generated reliably.",
+          "content": "The system encountered formatting issues and is retrying internally to maintain structured output consistency. Our strict validation layer rejected the previous attempts to ensure high-fidelity reasoning and proper debate structure.",
+          "round": 1,
+          "createdAt": "2026-04-25T05:36:04.066Z"
+        },
+        {
+          "id": "m5036",
+          "agent": "Gemma",
+          "color": "green",
+          "summary": "Response could not be generated reliably.",
+          "content": "The system encountered formatting issues and is retrying internally to maintain structured output consistency. Our strict validation layer rejected the previous attempts to ensure high-fidelity reasoning and proper debate structure.",
+          "round": 1,
+          "createdAt": "2026-04-25T05:36:06.578Z"
+        },
+        {
+          "id": "m8876",
+          "agent": "Qwen",
+          "color": "amber",
+          "summary": "Response could not be generated reliably.",
+          "content": "The system encountered formatting issues and is retrying internally to maintain structured output consistency. Our strict validation layer rejected the previous attempts to ensure high-fidelity reasoning and proper debate structure.",
+          "round": 1,
+          "createdAt": "2026-04-25T05:36:09.093Z"
+        },
+        {
+          "id": "m4159",
+          "agent": "Llama-3",
+          "color": "blue",
+          "summary": "Response could not be generated reliably.",
+          "content": "The system encountered formatting issues and is retrying internally to maintain structured output consistency. Our strict validation layer rejected the previous attempts to ensure high-fidelity reasoning and proper debate structure.",
+          "round": 2,
+          "createdAt": "2026-04-25T05:36:11.608Z"
+        },
+        {
+          "id": "m8319",
+          "agent": "Gemma",
+          "color": "green",
+          "summary": "Response could not be generated reliably.",
+          "content": "The system encountered formatting issues and is retrying internally to maintain structured output consistency. Our strict validation layer rejected the previous attempts to ensure high-fidelity reasoning and proper debate structure.",
+          "round": 2,
+          "createdAt": "2026-04-25T05:36:14.125Z"
+        },
+        {
+          "id": "m8469",
+          "agent": "Qwen",
+          "color": "amber",
+          "summary": "Response could not be generated reliably.",
+          "content": "The system encountered formatting issues and is retrying internally to maintain structured output consistency. Our strict validation layer rejected the previous attempts to ensure high-fidelity reasoning and proper debate structure.",
+          "round": 2,
+          "createdAt": "2026-04-25T05:36:16.637Z"
+        }
+      ],
+      "createdAt": "2026-04-25T05:36:01.550Z"
+    },
+    "d7098a16-740f-4c28-98e8-dcc6886bbcb7": {
+      "_id": "d7098a16-740f-4c28-98e8-dcc6886bbcb7",
+      "userId": "hackathon-user",
+      "idea": "Founders, students, and decision-makers often spend days or even weeks validating ideas because feedback is either too polite, too slow, or too shallow. Friends hesitate to be critical, while online communities provide fragmented opinions without structure or depth. As a result, weak ideas survive too long simply because they were never rigorously challenged early enough.\n\nThis creates a major gap in decision-making: there is no fast, structured way to stress-test ideas from multiple perspectives before investing time and resources into them.",
+      "rounds": 3,
+      "mode": "fast",
+      "status": "running",
+      "messages": [
+        {
+          "id": "m3120",
+          "agent": "Llama-3",
+          "color": "blue",
+          "summary": "Response could not be generated reliably.",
+          "content": "The system encountered formatting issues and is retrying internally to maintain structured output consistency. Our strict validation layer rejected the previous attempts to ensure high-fidelity reasoning and proper debate structure.",
+          "round": 1,
+          "createdAt": "2026-04-25T05:37:15.262Z"
+        },
+        {
+          "id": "m5858",
+          "agent": "Gemma",
+          "color": "green",
+          "summary": "Response could not be generated reliably.",
+          "content": "The system encountered formatting issues and is retrying internally to maintain structured output consistency. Our strict validation layer rejected the previous attempts to ensure high-fidelity reasoning and proper debate structure.",
+          "round": 1,
+          "createdAt": "2026-04-25T05:37:17.767Z"
+        },
+        {
+          "id": "m9519",
+          "agent": "Qwen",
+          "color": "amber",
+          "summary": "Response could not be generated reliably.",
+          "content": "The system encountered formatting issues and is retrying internally to maintain structured output consistency. Our strict validation layer rejected the previous attempts to ensure high-fidelity reasoning and proper debate structure.",
+          "round": 1,
+          "createdAt": "2026-04-25T05:37:20.274Z"
+        },
+        {
+          "id": "m2131",
+          "agent": "Llama-3",
+          "color": "blue",
+          "summary": "Response could not be generated reliably.",
+          "content": "The system encountered formatting issues and is retrying internally to maintain structured output consistency. Our strict validation layer rejected the previous attempts to ensure high-fidelity reasoning and proper debate structure.",
+          "round": 2,
+          "createdAt": "2026-04-25T05:37:22.782Z"
+        },
+        {
+          "id": "m8822",
+          "agent": "Gemma",
+          "color": "green",
+          "summary": "Response could not be generated reliably.",
+          "content": "The system encountered formatting issues and is retrying internally to maintain structured output consistency. Our strict validation layer rejected the previous attempts to ensure high-fidelity reasoning and proper debate structure.",
+          "round": 2,
+          "createdAt": "2026-04-25T05:37:25.296Z"
+        }
+      ],
+      "createdAt": "2026-04-25T05:37:11.463Z"
     }
   },
   "users": {

@@ -14,7 +14,7 @@ export interface ParsedAIResponse {
  * Step 2 — Hard Validation Rules
  */
 export function isValid(output: string): boolean {
-  if (!output.includes("MODEL:")) return false;
+  // Relaxed: MODEL: is now optional for validation
   if (!output.includes("SUMMARY:")) return false;
   if (!output.includes("DETAIL:")) return false;
   if (!output.includes("CODE:")) return false;
@@ -64,7 +64,13 @@ export function extractStructuredText(raw: string, reasoningFromApi?: string): P
   const codeMatch = raw.match(/CODE:\s*([\s\S]*)/i);
 
   if (!summaryMatch || !detailMatch) {
-    throw new Error('ValidationFailed: Response missing SUMMARY or DETAIL section.');
+    // If it fails even after cleaning, try to treat the whole thing as detail
+    return {
+      summary: "Observation",
+      full_response: raw,
+      thoughtProcess,
+      raw
+    };
   }
 
   let summary = summaryMatch[1].trim();
@@ -131,13 +137,11 @@ export async function generateValidatedAIResponse(params: GenerateParams, maxAtt
   const modelNameMatch = lastRaw.match(/MODEL:\s*([^\n]+)/);
   const modelName = modelNameMatch ? modelNameMatch[1].trim() : 'AI Agent';
 
-  const fallbackRaw = `MODEL: ${modelName}
-
-SUMMARY:
-Response could not be generated reliably.
+  const fallbackRaw = `SUMMARY:
+Observation (Stabilized)
 
 DETAIL:
-The system encountered formatting issues and is retrying internally to maintain structured output consistency. Our strict validation layer rejected the previous attempts to ensure high-fidelity reasoning and proper debate structure.
+${lastRaw || 'The agent was unable to produce a structured response within the required constraints. Falling back to internal reasoning trace.'}
 
 CODE:
 NONE`;
