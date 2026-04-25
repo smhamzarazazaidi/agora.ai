@@ -37,6 +37,7 @@ app.use('/api/rag', ragRoutes);
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', provider: process.env.AI_PROVIDER || 'openai' });
 });
+
 const errorLogPath = path.join(process.cwd(), 'server-error.log');
 
 app.use((err: any, req: any, res: any, next: any) => {
@@ -47,7 +48,11 @@ Stack: ${err.stack}
 --------------------------------------------------
 `;
   console.error('[Global Error]', err);
-  fs.appendFileSync(errorLogPath, errorDetail);
+  try {
+    fs.appendFileSync(errorLogPath, errorDetail);
+  } catch (logErr) {
+    console.error('[Logger Error] Could not write to log file:', logErr);
+  }
   
   if (res.headersSent) return next(err);
   res.status(500).json({

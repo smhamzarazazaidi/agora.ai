@@ -255,6 +255,7 @@ RULES:
       recommendation: { action: 'STOP', condition: 'System error' },
       nextActions: [],
       confidence: { score: 0, basis: 'Parsing failure' },
+      confirmed_by: [],
       agreed_statement: 'Synthesis failed.'
     };
   }
