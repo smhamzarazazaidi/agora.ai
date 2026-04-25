@@ -62,8 +62,8 @@ export function useDebate() {
           if (currentDebateId) store.setStatus(currentDebateId, 'done')
           store.setRunning(false)
           store.setTyping(null)
-          // Refresh the list to ensure we have the exact DB state
-          store.fetchDebates(token)
+          // Disabled auto-refresh to prevent potential UI reset issues
+          // store.fetchDebates(token)
         }
       )
 

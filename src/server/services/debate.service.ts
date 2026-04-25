@@ -179,9 +179,19 @@ RULES:
     .map(m => m.content)
     .join('\n\n');
 
+  // Emit synthesis start
+  res.write(`data: ${JSON.stringify({ type: 'typing', agent: 'System (Synthesizer)' })}\n\n`);
+
+  // Truncate transcript if too long (approx 20k chars)
+  let finalTranscript = debateSummary;
+  if (finalTranscript.length > 20000) {
+    console.warn(`[Debate] Transcript too long (${finalTranscript.length}). Truncating for synthesis.`);
+    finalTranscript = finalTranscript.substring(0, 5000) + "\n\n... [TRUNCATED] ...\n\n" + finalTranscript.slice(-15000);
+  }
+
   const verdictRes = await generateAIResponse({
     systemPrompt: verdictPrompt,
-    messages: [{ role: 'user', content: `Debate topic: "${idea}"\n\nFull Debate Transcript:\n${debateSummary}` }],
+    messages: [{ role: 'user', content: `Debate topic: "${idea}"\n\nFull Debate Transcript:\n${finalTranscript}` }],
     mode: 'deep',
   });
 

@@ -92,11 +92,16 @@ RULES:
 - Confidence score must reflect actual reasoning quality, not optimism
 - If the transcript contains conflicting views, the recommendation must acknowledge the strongest objection`;
 
-  const transcript = iterations
-    .map(i => `[Iteration ${i.iteration}] ${i.reasoning}${i.toolName ? `\n(Called Tool: ${i.toolName} with Result: ${i.toolResult?.substring(0, 300)}...)` : ''}`)
-    .join('\n\n');
+    // Truncate transcript if too long (approx 20k chars) to prevent context window crash
+    let transcript = iterations
+      .map(i => `[Iteration ${i.iteration}] ${i.reasoning}${i.toolName ? `\n(Called Tool: ${i.toolName} with Result: ${i.toolResult?.substring(0, 300)}...)` : ''}`)
+      .join('\n\n');
 
-  try {
+    if (transcript.length > 20000) {
+      console.warn(`[Graph] Transcript too long (${transcript.length}). Truncating for synthesis.`);
+      transcript = transcript.substring(0, 5000) + "\n\n... [TRUNCATED FOR BREVITY] ...\n\n" + transcript.slice(-15000);
+    }
+
     const res = await generateAIResponse({
       systemPrompt: verdictPrompt,
       messages: [{ role: 'user', content: `Original Idea: "${idea}"\n\nFull Reasoning Trace:\n${transcript}` }],
@@ -325,6 +330,7 @@ export async function runGraphReasoning(
       sendSSE(res, { type: 'message', message: finalMsg });
 
       // Build and emit verdict
+      sendSSE(res, { type: 'typing', agent: 'System (Synthesizer)' });
       const verdict = await generateDecisionBrief(idea, state.iterations);
       await Debate.findByIdAndUpdate(debateId, { verdict, status: 'done' });
       sendSSE(res, { type: 'verdict', verdict });
